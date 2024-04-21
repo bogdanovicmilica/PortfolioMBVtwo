@@ -354,7 +354,7 @@ footer .copy {
   color: white;
 }
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1412px) {
   #projects {
     display: flex;
     flex-direction: column;
@@ -425,7 +425,7 @@ footer .copy {
   align-items: left;
 }
 
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 780px) {
   .block_one {
     width: 94%;
   }
@@ -441,7 +441,7 @@ footer .copy {
   }
   #block_two .text_two p {
     font-weight: 100;
-    font-size: 11pt;
+    font-size: 10pt;
   }
   #block_two .text_two h3 {
     font-size: 28pt;
@@ -465,6 +465,9 @@ footer .copy {
   }
   #projects h1 img {
     width: 400px;
+  }
+  #block_two .text_two p {
+    font-size: 9pt;
   }
   footer .tt a {
     padding: 10px;
@@ -507,7 +510,7 @@ footer .copy {
     padding: 20px;
   }
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 490px) {
   #header-all li a {
     font-size: 7pt;
   }
