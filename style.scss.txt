@@ -1,5 +1,3 @@
-style.scss
-
 *{
     margin: 0 auto;
     padding: 0 auto;
@@ -8,17 +6,35 @@ style.scss
 @import "partials/mixins";
 @import "partials/variables";
 
+html{
+    scroll-behavior: smooth;
+}
 body{
-    background-image: url("../img/background.jpg");
+    background-image: url("../img/background_three.jpg");
     background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-color: darken($color: #000000, $amount: 5%);
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 };
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+header{
+    width: 94%
+}
 #header-all{
     @include flexCenter;
      color: $primary_color;
      height: 30%;
+     width: 94%;
      img{
         width: $width_1;
         border-radius: 25px;
@@ -30,15 +46,13 @@ body{
     li{
         margin: 10px;
         text-transform: uppercase;
+        font-size: 15pt;
         a{
             color: $primary_color;
             text-decoration: none;
             &:hover {
-                background-color: $primary_color;
-                padding: 5px;
-                color: $secondary_color;
-                transition: 0.7s;
-                border-radius: 10px;
+                color: $third_color;
+                transition: 0.5s;
                 &::after{
                     transition: 0.7s;
                 }
@@ -49,6 +63,9 @@ body{
 ul{
     @include fontText;
 };
+.ja2{
+    display: none;
+}
 .block_one{
     @include flexCenter;
     width: 80%;
@@ -60,6 +77,14 @@ ul{
 }
 .text{
     @include fontText;
+    h2{
+        text-transform: uppercase;
+        font-size: 25pt;
+        font-weight: 300;
+        span{
+            font-weight: 800;
+        }
+    }
     h1{
         font-size: 30pt;
         color: $primary_color;
@@ -80,43 +105,57 @@ progress{
 hr{
     border: solid 1px $primary_color;
 }
-.block_two{
-    background-image: url(../img/background_two.jpg);
-    height: $height_one;
+#block_two{
+    /*background-image: url(../img/background_two.jpg);
+    background-repeat: no-repeat;*/
+    background-color: $primary_color;
+    background-size: 100%;
+    height: $height_two;
     width: 100%;
-    #about_me{
-        width: 100%;
-        text-align: left;
-        font-size: 14pt;
-        color: $secondary_color;
-        font-weight: 200;
-        @include flexColumn;
-        @include font_text;
-            h1{
-                @include fontText;
-                font-weight: $font_weight_one;
-                font-size: 35pt;
-                color: $secondary_color;
-                margin: $margin;
-            }
-        }
-    }
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
 .text_two{
-    margin-top: 20px;
+    width: 100%;
+    font-size: 14pt;
+    color: $secondary_color;
+    font-weight: 200;
+    padding: 50px;
+    word-break: break-word;
+    @include flexColumn;
+    @include font_text;
+        h3{
+            @include fontText;
+            font-weight: $font_weight_one;
+            font-size: 35pt;
+            color: $secondary_color;
+            margin: $margin;
+            text-align: center;
+        }
+        p{
+            text-align: left;
+            font-size: 14pt;
+            font-weight: 600;
+        }
+}
+.proj{
+    @include flexColumn;
+    padding: 30px;
 }
 #projects{
-    @include flexColumn;
-    width: $block_width;
+    @include flexCenter;
+    width: 90%;
     border-radius: $border-radius;
-    border: solid 3px $primary_color;
+    margin: 0px;
         img{
-            width: 550px;
-            border-radius: 70px;
+            width: 430px;
+            border-radius: 20px;
+            box-shadow: 7px 7px #00000019;
             &:hover{
-                border-radius: 50px;
+                opacity: 0.8;
                 transition: 0.7s;
-                width: 600px;
                 transition: 0.6s;
                 &::after{
                     transition: 0.6s;
@@ -124,92 +163,183 @@ hr{
         }
     }
 }
-#projects h1{
+.p1{
     color: $primary_color;
-    margin-top: 20px;
     text-transform: uppercase;
-    font-size: 35pt;
+    padding: 10px;
+    font-size: 23pt;
     @include fontText;
     text-align: center;
-    font-weight: $font_weight_one;
+    font-weight: 300;
+    border: 1px solid $primary_color;
+    border-radius: 5px;
+    width: 30%;
+    span{
+        font-weight: 800;
+    }
 }
-hr{
-    width: 100%;
+#projects h4{
+    color: $primary_color;
+    text-transform: uppercase;
+    padding: 10px;
+    font-size: 20pt;
+    @include fontText;
+    text-align: center;
+    font-weight: 300;
 }
 form{
-    @include flexColumn;
     @include fontText;
-    font-weight: $font_weight_one;
-    background-color: $primary_color;
-    margin-top: $margin;
-    margin-bottom: $margin;
-    width: 40%;
-    border-radius: $border-radius;
-    height: $height_two;
-    color: $secondary_color;
+    width: 60%;
+    padding: 20px;
+    height: 400px;
+    background: linear-gradient( to bottom, $primary_color, $primary_color);
+    border-radius: 30px;
+    margin-bottom: 4%;
     input[type]{
         padding: 15px;
-        border-radius: $border-radius;
+        margin: 20px;
+        width: 60%;
+        border-radius: 7px;
         border: none;
+        &:focus{
+            background-color: $primary_color;
+            color: $secondary_color;
+            transition: 0.7s;
+        }
     }
-    h1{
+    h5{
         margin-top: $margin;
+        font-size: 20pt;
+        font-weight: 800;
+        padding: 0px 0px 0px 20px;
+        color: $secondary_color;
     }
 }
-.form{
-    margin: $margin;
+#form{
+    padding: 10px 20px;
 }
 button{
     @include fontText;
     font-weight: $font_weight_one;
-    padding: 15px;
-    border-radius: $border-radius;
+    padding: 5px;
+    text-align: left;
+    border-radius: 5px;
+    font-size: 11pt;
     border: none; 
     background-color: $primary_color;
     color: $secondary_color;
     text-transform: uppercase;
     &:hover{
-        background-color: $secondary_color;
-        color: $primary_color;
+        color: $third_color;
         transition: 0.5s;
         &::after{
             transition: 0.5s;
         }
     }
 }
-footer{
-    height: 80px;
-    color: $secondary_color;
-    background-color: $primary_color;
-    @include flexCenter;
-    i{
+textarea{
+    border-radius: 7px;
+    @include fontText;
+    color: $primary_color;
+    padding: 7px;
+    margin-bottom: 10px;
+    font-weight: 200;
+    padding: 15px;
+    margin: 20px;
+    width: 60%;
+    &:focus{
+        background-color: $primary_color;
         color: $secondary_color;
-        width: $font_weight_one;
-        @include flexCenter;
-        padding: 0px 60px;
+        transition: 0.7s;
     }
 }
-@media screen and (max-width: 1050px){
-        .block_two #about_me .text_two{
+.tt{
+    padding: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 5px;
+    @include fontText;
+    font-weight: 400;
+    word-break: break-word;
+    width: 70%;
+    text-align: center;
+    a{
+        text-decoration: none;
+        color: $secondary_color;
+        &:hover{
+            color: $third_color;
+            transition: 0.7s;
+            &::after{
+                transition: 0.7s;
+            }
+        }
+    
+    }
+}
+footer{
+    color: $secondary_color;
+    background-color: $primary_color;
+    @include flexColumn;
+    i{
+        color: $secondary_color;
+        padding: 7px;
+        font-size: 20pt;
+        text-align: center;
+        @include flexCenter;
+        align-items: center;
+    }
+    .copy{
+        @include fontText;
+        font-weight: 100;
+        font-size: 10pt;
+        color: $secondary_color;
+    }
+}
+@media screen and (max-width: 1500px){
+    #projects{
+        @include flexColumn;
+    }
+}
+@media screen and (max-width: 1250px){
+        #block_two .text_two{
             width: 100%;
             word-break: break-all;
             margin: 0px auto;
-            h1{
-                margin-left: 3%;
+            p{
+                font-weight: 200;
+                font-size: 12pt;
+        }
+        h3{
+            margin-top: 0px;
+            text-align: left;
         }
     }
-        #about_me{
-            p{
-                margin-left: 3%;
+        #text_two{
+            font-size: 10pt;
+            padding: 10px;
+            
+    }
+    #projects{
+        @include flexColumn;
+        border: none;
+        padding: 15px;
+        width: 94%;
+        overflow: hidden;
+        margin: 0%;
+        img{
+            width: 400px;
+            align-items: center;
         }
     }
 }
-
-
---RESPONSIVE--
-
-
 @media screen and (max-width: 940px){
+    .block_one{
+        @include flexColumn;
+        margin-top: 0%;
+        img{
+            width: 300px;
+        }
+    }
     #projects{
         border: none;
         h1{
@@ -223,31 +353,45 @@ footer{
         }
     }
 }
-    .block_two #about_me .text_two{
+    #block_two .text_two{
         word-break: normal;
         font-size: 10pt;
         .block_two{
             height: $height_two;
     }
+    #form{
+        button{
+            align-items: left;
+        }
+    }
 }
-@media screen and (max-width: 720px){
+@media screen and (max-width: 780px){
     .block_one{
-        width: 100%;
+        width: 94%;
         img{
-            width: 40%;
+            width: 300px;
             padding: 0px;
         }
         .text{
             width: 40%;
             h1{
-                font-size: 20pt;
+                font-size: 30pt;
             }
+        }
+    }
+    #block_two .text_two{
+        p{
+            font-weight: 100;
+            font-size: 10pt;
+        }
+        h3{
+            font-size: 28pt;
         }
     }
 }
 @media screen and (max-width: 720px){
     #projects{
-        width: 100%;
+        width: 94%;
         hr{ display: none;}
         h1{
             font-size: 40pt;
@@ -260,11 +404,26 @@ footer{
             }
         }
     }
+    #block_two .text_two{
+        p{
+            font-size: 9pt;
+        }
+    }
+    footer .tt a{
+        padding: 10px;
+        font-size: 10pt;
+        font-weight: 200;
+        justify-content: space-between;
+    }
 }
 @media screen and (max-width: 630px){
+    .navigation li a{
+        font-size: 13pt;
+    }
     form{
-        width: 100%;
-        border-radius: 0px;
+        width: 60%;
+        margin-bottom: 20px;
+        border-radius: 10px;
         background-color: $secondary_color;
         color: $primary_color;
         :focus{
@@ -281,75 +440,97 @@ footer{
             font-size: 30pt;
         }
     }
+    #block_two .text_two p{
+        font-weight: 200;
+        font-size: 10pt;
+        h3{
+            font-size: 17pt;
+        }
+    }
+    .text_two{
+        width: 50%;
+        padding: 20px;
+    }
 }
-@media screen and (max-width: 360px){
-    #header-all{
-        font-size: 9pt;
-        background-color: $secondary_color;
+@media screen and (max-width: 490px){
+    #header-all li a{
+        font-size: 7pt;
+    }
+    .navigation{
+        padding: 0px;
+    }
+    #header_all{
+        width: 94%;
+        padding: 0;
         img{
-            width: 40px;
+            width: 20px;
         }
     }
     .block_one{
-        @include flexColumn;
-        h1{
-            color: $secondary_color;
-        }
-        hr{
-            border: 1px solid $secondary_color;
-        }
+        display: block;
         .text{
-            width: 100%;
-            color: $secondary_color;
+            width: 94%;
+            h1{
+                font-size: 23pt;
+                font-weight: bolder;
+            }
+            h2{
+                font-size: 20pt;
+            }
+        }
+        img{
+            width: 200px;
+            @include flexCenter;
         }
     }
-    .block_two{
-        background-image: none;
-        background-color: $primary_color;
+    #block_two{
+        @include flexColumn;
+        height: 40%;
+        .text_two{
+            width: 90%;
+            h3{
+                font-size: 18pt;
+            }
+            p{
+                font-size: 9pt;
+            }
+        }
     }
     #projects{
-        background-image: url("../img/background_responsive.jpg");
-        border-radius: 0px;
+        width: 94%;
+        padding: 0px;
         img{
             border-radius: 20px;
             width: 300px;
         }
     }
+    
+    .p1{
+        width: 94%;
+        margin: 0px;
+        border: 0px;
+    }
+    form{
+        padding: 10px;
+    }
+    #form{
+        width: 100%;
+        margin: 0px 0px 0px 0px;
+        button{
+            text-align: right;
+        }
+    }
     footer{
         i{
             padding: 0px 15px;
-            font-size: 20pt;
+            font-size: 25pt;
+            display: inline;
         }
     }
 }
 
 
-
-
---VARIABLES--
-_variables.scss
-
-
-$flex-direction: row;
-$width_1: 70px;
-$primary_color: black;
-$secondary_color: white;
-$margin: 10px;
-$font_weight_one: 600;
-$font_weight_two: 400;
-$font_weight_three: 300;
-$block_width: 60%;
-$border-radius: 100px;
-$height_one: 600px;
-$height_two: 400px;
-$bp_large: 1050px;
-
-
-
-
---MIXINS--
-_mixins.scss
-
+---MIXINS---
 
 
 @mixin flexCenter{
@@ -383,7 +564,6 @@ _mixins.scss
 @mixin flexColumn{
     display: flex;
     flex-direction: column;
-    align-items: center;
 };
 @mixin flexStart{
     display: flex;
@@ -391,6 +571,20 @@ _mixins.scss
 
 }
 
+---VARIABLES---
 
 
-
+$flex-direction: row;
+$width_1: 70px;
+$primary_color: black;
+$secondary_color: white;
+$third_color: orangered;
+$margin: 10px;
+$font_weight_one: 600;
+$font_weight_two: 400;
+$font_weight_three: 300;
+$block_width: 60%;
+$border-radius: 100px;
+$height_one: 600px;
+$height_two: 400px;
+$bp_large: 1050px;
